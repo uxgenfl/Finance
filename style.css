@@ -80,7 +80,6 @@ input[type=file]{padding:9px}
 .qa:active{transform:scale(.95)}
 .qa .ni{width:26px;height:26px;stroke-width:2.4}
 .qa[hidden],body.selm .qa{display:none}
-#p_bud main>.row2+*,#p_goal main>.row2+*{margin-top:59px}
 .pn main{padding-bottom:128px}
 .pm{position:fixed;z-index:20;min-width:190px;padding:6px;background:var(--cd);color:var(--tx);border:1px solid var(--bd);border-radius:12px;box-shadow:0 10px 28px #0006}
 .pm button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:8px;background:none;color:inherit;font:inherit;font-size:15px;cursor:pointer;text-align:left}
