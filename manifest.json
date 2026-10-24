@@ -3,7 +3,6 @@
   "short_name": "Finance",
   "description": "Aplikasi manajemen keuangan pribadi",
   "lang": "id",
-  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

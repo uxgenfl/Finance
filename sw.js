@@ -1,4 +1,4 @@
-const CACHE='finance-v9';
+const CACHE='finance-v10';
 const ASSETS=['./','index.html','style.css','app.js','manifest.json',
   'fonts/geist-400.woff2','fonts/geist-500.woff2','fonts/geist-600.woff2','fonts/geist-mono-400.woff2',
   'icons/icon.svg','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','icons/favicon-32.png'];
