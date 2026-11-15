@@ -225,3 +225,19 @@ body.kb .cal-d:focus-visible,body.kb .cal-m:focus-visible,body.kb .cal-n:focus-v
 .cal-d.out:disabled{opacity:.2;cursor:default}
 #dp .act .b{background:transparent;border:1px solid var(--bd)}
 #dp .act .b.p{background:var(--ac);color:var(--on);border-color:var(--ac)}
+
+
+/* ===== Perubahan preview: Target, Aset & Liabilitas ===== */
+#p_set{visibility:hidden;transition:visibility 0s .4s}body.onset #p_set{visibility:visible;transition-delay:0s}
+.g3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.ft i.fi{position:absolute;z-index:1;bottom:-1px;left:0;width:0;height:3px;border-radius:3px 3px 0 0;background:var(--ac);transition:transform .34s cubic-bezier(.2,.8,.2,1),width .34s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){.ft i.fi{transition:none}}
+.sh.tall{padding:30px 20px 34px}.sh.tall h3{margin-bottom:14px}.sh.tall .tbs{margin-bottom:10px}.sh.tall .act{margin-top:30px}
+body.selm:not([data-selk="tx"]) .r[data-k="tx"]::before,body.selm:not([data-selk="tx"]) .c[data-k="tx"]::after{display:none!important}
+body.selm:not([data-selk="bud"]) .r[data-k="bud"]::before,body.selm:not([data-selk="bud"]) .c[data-k="bud"]::after{display:none!important}
+body.selm:not([data-selk="goal"]) .r[data-k="goal"]::before,body.selm:not([data-selk="goal"]) .c[data-k="goal"]::after{display:none!important}
+body.selm:not([data-selk="need"]) .r[data-k="need"]::before,body.selm:not([data-selk="need"]) .c[data-k="need"]::after{display:none!important}
+body.selm:not([data-selk="aset"]) .r[data-k="aset"]::before,body.selm:not([data-selk="aset"]) .c[data-k="aset"]::after{display:none!important}
+body.selm:not([data-selk="liab"]) .r[data-k="liab"]::before,body.selm:not([data-selk="liab"]) .c[data-k="liab"]::after{display:none!important}
+body.selm:not([data-selk="tg"]) .r[data-k="tg"]::before,body.selm:not([data-selk="tg"]) .c[data-k="tg"]::after{display:none!important}
+@media(min-width:1024px){.g3{gap:16px}.d-tg{grid-column:1/-1;grid-row:5}#p_aset main{--mw:880px}}
