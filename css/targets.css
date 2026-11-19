@@ -60,6 +60,10 @@ body.selm:not([data-selk="need"]) .r[data-k="need"]::before,
 body.selm:not([data-selk="need"]) .c[data-k="need"]::after {
   display: none !important;
 }
+body.selm:not([data-selk="subs"]) .r[data-k="subs"]::before,
+body.selm:not([data-selk="subs"]) .c[data-k="subs"]::after {
+  display: none !important;
+}
 body.selm:not([data-selk="aset"]) .r[data-k="aset"]::before,
 body.selm:not([data-selk="aset"]) .c[data-k="aset"]::after {
   display: none !important;
