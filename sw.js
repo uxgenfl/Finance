@@ -7,7 +7,7 @@
 
    Setiap kali mengubah file aplikasi, naikkan VERSION di bawah (misalnya finance-v14 jadi finance-v15)
    supaya aplikasi yang sudah terpasang mengunduh ulang semua file dan memperbarui dirinya. */
-const VERSION = 'finance-v14';
+const VERSION = 'finance-v15';
 
 const FILES = [
   './',
