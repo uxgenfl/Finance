@@ -1,0 +1,257 @@
+/* Geser baris, tampilan kosong, skeleton, animasi masuk/keluar, urut ulang */
+
+/* swipe actions */
+#txl {
+  overflow: hidden;
+}
+.sa {
+  display: none !important;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  width: 144px;
+  display: flex;
+  visibility: hidden;
+}
+.r.sx .sa {
+  visibility: visible;
+}
+.sa button {
+  flex: 1;
+  border: 0;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 0;
+}
+.sa .sa1 {
+  background: var(--ac);
+  color: var(--on);
+}
+.sa2 {
+  background: var(--tx);
+  color: var(--on);
+}
+/* empty + skeleton */
+.em {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 24px 12px;
+}
+.em > .mu {
+  min-height: 2.9em;
+}
+.ei {
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 4px;
+  animation: bob 2.6s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.sk i {
+  display: block;
+  height: 14px;
+  border-radius: 7px;
+  margin: 14px 0;
+  background: linear-gradient(
+    90deg,
+    var(--bd) 25%,
+    color-mix(in srgb, var(--bd) 45%, var(--cd)) 50%,
+    var(--bd) 75%
+  );
+  background-size: 200% 100%;
+  animation: shim 1.3s linear infinite;
+}
+.sk i:nth-child(1) {
+  width: 55%;
+}
+.sk i:nth-child(2) {
+  width: 92%;
+}
+.sk i:nth-child(3) {
+  width: 78%;
+}
+@keyframes shim {
+  to {
+    background-position: -200% 0;
+  }
+}
+/* enter / exit */
+.rm {
+  transition:
+    opacity 0.2s,
+    transform 0.22s,
+    max-height 0.24s ease,
+    padding 0.24s,
+    margin 0.24s,
+    border-width 0.24s !important;
+  opacity: 0 !important;
+  transform: scale(0.94) !important;
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  border-width: 0 !important;
+}
+.nw {
+  animation: nwi 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes nwi {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.gr {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: grow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+.zi {
+  animation: zi 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes zi {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-25deg);
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    width: 22px;
+  }
+}
+@keyframes pop2 {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes pc {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+body.selm .r[data-k]::before {
+  animation: pop 0.22s ease both;
+}
+body.selm .r[data-k].sl::before {
+  animation: pop2 0.26s ease both;
+}
+body.selm .c[data-k]::after {
+  animation: pc 0.22s ease both;
+}
+body.selm .c[data-k].sl::after {
+  animation: pop2 0.26s ease both;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: ease-in-out;
+}
+html.na *,
+html.na ::before,
+html.na ::after {
+  transition: none !important;
+  animation: none !important;
+}
+html.tt,
+html.tt * {
+  transition:
+    background-color 0.35s,
+    color 0.35s,
+    border-color 0.35s,
+    fill 0.35s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+#wll,
+#wll *,
+#p_goal .g2,
+#p_goal .g2 *,
+#p_tx [data-k],
+#p_tx [data-k] * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+#wll ::selection,
+#p_goal .g2 ::selection,
+#p_tx [data-k] ::selection {
+  background: transparent;
+}
+.dgi {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  will-change: transform;
+}
+.dgl {
+  z-index: 5;
+  transition: none !important;
+  will-change: transform;
+  touch-action: none;
+  cursor: grabbing;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+.r.dgl {
+  background: var(--cd);
+  border-radius: 12px;
+  border-color: transparent;
+  margin: 0 -10px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.dgl.dgs {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.2s !important;
+  box-shadow: none;
+}

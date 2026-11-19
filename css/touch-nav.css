@@ -1,0 +1,194 @@
+/* Aturan layar sentuh dan item navigasi menu */
+
+@media (max-width: 599px) {
+  #mo {
+    padding: 0 12px calc(max(5vh, 20px) + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+  }
+  .sh {
+    border-radius: 20px;
+    max-height: calc(100% - 12px);
+  }
+}
+.b,
+button,
+.r,
+label,
+select,
+input,
+a {
+  touch-action: manipulation;
+}
+.sni {
+  border-radius: 8px !important;
+}
+.sni.on::before {
+  display: none !important;
+}
+.sni > svg {
+  display: none !important;
+}
+.sni.on {
+  border-left: 3px solid var(--ac) !important;
+  padding-left: 9px !important;
+}
+.bal {
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+.bal:active {
+  opacity: 0.7;
+}
+.hq details {
+  padding: 10px 0;
+  border-top: 1px solid var(--bd);
+}
+.hq h3 + details {
+  border-top: 0;
+}
+.hq summary {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 15px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.hq summary::-webkit-details-marker {
+  display: none;
+}
+.hq summary::after {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--mu);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='square'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='square'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+  transition: transform 0.2s;
+}
+.hq details[open] summary::after {
+  transform: rotate(180deg);
+}
+.hq details p {
+  margin: 8px 0 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.bal:focus-visible {
+  outline: 2px solid var(--fr);
+  outline-offset: 3px;
+}
+
+b,
+strong,
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+.ei .ni {
+  width: 40px;
+  height: 40px;
+  stroke-width: 1.5;
+  color: var(--mu);
+}
+.ic .ni {
+  stroke-width: 2.2;
+}
+.dn2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lk {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: currentColor;
+}
+.mn {
+  margin-left: 0;
+}
+.dlk {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--tx);
+}
+.dlk .lk {
+  width: 24px;
+  height: 24px;
+}
+.sn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+  flex: 1;
+  min-height: 0;
+}
+.sni[data-t="set"] {
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+.sni {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: 0;
+  background: none;
+  color: var(--mu);
+  font: inherit;
+  font-weight: 500;
+  text-align: left;
+  padding: 0 12px;
+  min-height: 44px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.sni .ni {
+  width: 20px;
+  height: 20px;
+}
+.sni:hover {
+  background: color-mix(in srgb, var(--tx) 6%, transparent);
+  color: var(--tx);
+}
+.sni.on {
+  color: var(--ac);
+  background: color-mix(in srgb, var(--ac) 12%, transparent);
+}
+.sni.on::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--ac);
+}

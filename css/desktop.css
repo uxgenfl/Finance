@@ -1,0 +1,366 @@
+/* Layout laptop (1024px ke atas).
+
+   Gagasan: halaman kerja seperti buku kas. Sidebar tetap di kiri dengan total saldo,
+   judul halaman besar rata kiri, daftar di kolom utama, dan ringkasan di margin kanan
+   yang dipisah garis tipis, bukan kartu lagi. Angka uang memakai angka tabular supaya rata.
+   Warna, font teks, dan komponen sama dengan mobile. Di bawah 1024px file ini tidak berlaku. */
+
+@media (min-width: 1024px) {
+  :root {
+    --side: 248px;
+    --gutter: 40px;
+    --page: 1240px;
+  }
+
+  /* ---------- Sidebar ---------- */
+  body {
+    padding-left: var(--side);
+  }
+  header.br {
+    display: contents;
+  }
+  #tg,
+  #av,
+  header h1,
+  .dh .dx,
+  #dw .bk {
+    display: none;
+  }
+  #dw,
+  #dw.on {
+    display: block;
+    inset: 0 auto 0 0;
+    width: var(--side);
+    z-index: 7;
+  }
+  #dw .pn2 {
+    width: 100%;
+    transform: none;
+    transition: none;
+    padding: calc(env(safe-area-inset-top, 0px) + 28px) 16px 24px;
+  }
+  .dh {
+    margin-bottom: 24px;
+    padding-left: 4px;
+  }
+  .sr.lp-only {
+    display: flex;
+  }
+  .sni {
+    min-height: 40px;
+    font-size: 14.5px;
+  }
+  .side-total {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 4px 20px;
+    padding: 16px 0;
+    border-block: 1px solid var(--bd);
+  }
+  .side-total .mu {
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .side-total b {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- Bingkai halaman ---------- */
+  .pn {
+    padding-top: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bd) transparent;
+  }
+  main {
+    width: 100%;
+    max-width: var(--page);
+    margin-inline: auto;
+    padding: 40px var(--gutter) 72px;
+    gap: 20px;
+  }
+  /* Judul halaman: besar, rata kiri, tombol aksi di kanan */
+  main > .row2 {
+    align-items: flex-end;
+    padding-bottom: 4px;
+  }
+  main > .row2 > h3 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  /* Filter tab selebar isinya, tidak membentang di seluruh kolom */
+  .ft {
+    width: fit-content;
+    justify-self: start;
+  }
+  .ft button {
+    flex: none;
+    padding-inline: 20px;
+  }
+  .g2,
+  .g3 {
+    gap: 16px;
+  }
+
+  /* Tombol tambah cepat berlabel supaya jelas fungsinya */
+  .qa {
+    right: 40px;
+    bottom: 40px;
+    width: auto;
+    height: 48px;
+    padding: 0 20px 0 16px;
+    gap: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .qa::after {
+    content: attr(aria-label);
+    font: 600 14px var(--ff);
+  }
+
+  /* ---------- Dashboard: ringkasan, grafik, lalu daftar ---------- */
+  #p_dash main {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  #p_dash .g2 {
+    display: contents;
+  }
+  .d-bal {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 40px;
+    align-items: center;
+    padding: 24px 28px;
+  }
+  .d-bal > .mu {
+    grid-area: 1 / 1;
+    align-self: end;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .d-bal > .big {
+    grid-area: 2 / 1;
+    align-self: start;
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+  .d-bal > .st {
+    grid-area: 1 / 2 / 3 / 3;
+    margin-top: 0;
+  }
+  .st b {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .d-chart {
+    grid-column: 1 / 8;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .d-chart svg {
+    display: block;
+    max-height: 220px;
+    margin: auto;
+  }
+  .d-donut {
+    grid-column: 8 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .d-donut > :not(h2) {
+    margin-block: auto;
+  }
+  .d-tx {
+    grid-column: 1 / 8;
+    grid-row: 3 / 5;
+  }
+  .d-tx .r:nth-of-type(n + 7) {
+    display: flex;
+  }
+  .d-wish {
+    grid-column: 8 / -1;
+    grid-row: 3;
+  }
+  .d-sav {
+    grid-column: 8 / -1;
+    grid-row: 4;
+  }
+  .d-tg {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+
+  /* ---------- Tabungan: kartu mengisi lebar halaman ---------- */
+  #p_goal .g2 {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  }
+
+  /* ---------- Laporan: periode di atas, ringkasan kiri, rincian kanan ---------- */
+  #p_rep main {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  #p_rep main > .c:first-child {
+    grid-column: 1 / -1;
+  }
+  #p_rep main > .g2 {
+    grid-column: 1 / 6;
+    grid-template-columns: 1fr !important;
+  }
+  #p_rep main > .c:last-child {
+    grid-column: 6 / -1;
+  }
+
+  /* ---------- Pengaturan: menu dan preferensi berdampingan ---------- */
+  #p_set main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  #p_set main > .row2 {
+    grid-column: 1 / -1;
+  }
+
+  /* ---------- Panel Bahasa, Kontrol data, Bantuan: menutup area konten, sidebar tetap terlihat ---------- */
+  #pp {
+    left: var(--side);
+  }
+  .ph {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px var(--gutter) 14px;
+  }
+  .pc {
+    max-width: 760px;
+    padding: 4px var(--gutter) 40px;
+  }
+
+  /* Toolbar pilihan dan toast berpusat di area konten */
+  #sb,
+  #ts {
+    left: calc(var(--side) + 12px);
+  }
+}
+
+/* ---------- Laptop kecil (1024 sampai 1139px): dashboard lebih rapat, tanpa panel ringkasan ---------- */
+@media (min-width: 1024px) and (max-width: 1139px) {
+  :root {
+    --gutter: 32px;
+  }
+  .d-chart {
+    grid-column: 1 / 7;
+  }
+  .d-donut {
+    grid-column: 7 / -1;
+  }
+  .d-tx {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+  .d-wish {
+    grid-column: 1 / 7;
+    grid-row: 4;
+  }
+  .d-sav {
+    grid-column: 7 / -1;
+    grid-row: 4;
+  }
+  .d-tg {
+    grid-row: 5;
+  }
+}
+
+/* ---------- Laptop lebar (1140px ke atas): daftar di kiri, ringkasan di margin kanan ---------- */
+@media (min-width: 1140px) {
+  #p_tx main,
+  #p_bud main,
+  #p_aset main {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-content: start;
+    column-gap: 0;
+  }
+  #p_tx main > :not(.side),
+  #p_bud main > :not(.side),
+  #p_aset main > :not(.side) {
+    grid-column: 1;
+    margin-right: 40px;
+  }
+  .side {
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+    position: sticky;
+    top: 40px;
+    padding-left: 32px;
+    border-left: 1px solid var(--bd);
+  }
+  .side h2 {
+    margin: 0 0 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mu);
+  }
+  .side .side-sub {
+    margin-top: 32px;
+  }
+  .side-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--bd);
+  }
+  .side-stat b {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums;
+  }
+  .side-bar {
+    padding: 10px 0 4px;
+  }
+  .side-bar .row2 {
+    gap: 12px;
+  }
+  .side-bar .row2 span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .side-bar b {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .side-bar .pb {
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,72 @@
+/* Menu samping (drawer) dan kepala menu */
+
+#dw {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: none;
+}
+#dw.on {
+  display: block;
+}
+#dw .bk {
+  position: absolute;
+  inset: 0;
+  background: #0007;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#dw .pn2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: min(310px, 86%);
+  background: var(--cd);
+  color: var(--tx);
+  border-right: 1px solid var(--bd);
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: calc(env(safe-area-inset-top, 0px) + 16px) 16px
+    calc(env(safe-area-inset-bottom, 0px) + 16px);
+  overflow: auto;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+#dw.show .bk {
+  opacity: 1;
+}
+#dw.show .pn2 {
+  transform: none;
+}
+.dh {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.di {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.di b {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.di small {
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.di small:empty {
+  display: none;
+}
+.sl {
+  padding: 4px 16px;
+}
