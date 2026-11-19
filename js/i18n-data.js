@@ -72,11 +72,11 @@ const EN = {
   "Pilih file gambar": "Choose an image file",
   "Gagal memuat foto": "Failed to load the photo",
   "Reset data": "Reset data",
-  "Hapus semua transaksi, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target. Kategori tetap ada.":
-    "Delete all transactions, needs, wants, balance, savings, assets, liabilities, and goals. Categories are kept.",
+  "Hapus semua transaksi, langganan, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target. Kategori tetap ada.":
+    "Delete all transactions, subscriptions, needs, wants, balance, savings, assets, liabilities, and goals. Categories are kept.",
   "Reset semua data": "Reset all data",
-  "Hapus semua transaksi, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target? Anda masih bisa mengurungkannya sesaat setelah ini.":
-    "Delete all transactions, needs, wants, balance, savings, assets, liabilities, and goals? You can still undo this right after.",
+  "Hapus semua transaksi, langganan, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target? Anda masih bisa mengurungkannya sesaat setelah ini.":
+    "Delete all transactions, subscriptions, needs, wants, balance, savings, assets, liabilities, and goals? You can still undo this right after.",
   Reset: "Reset",
   "Semua data direset": "All data has been reset",
   "Data hanya tersimpan di browser ini. Simpan cadangan secara berkala agar tidak hilang.":
@@ -273,6 +273,7 @@ const EN = {
   Motor: "Motorbike",
   Rencana: "Plans",
   Neraca: "Balance sheet",
+  Langganan: "Subscriptions",
   Kebutuhan: "Needs",
   Keinginan: "Wants",
   Aset: "Assets",
@@ -296,6 +297,11 @@ const EN = {
   "Tambah target jangka menengah": "Add medium-term goal",
   "Tambah target jangka panjang": "Add long-term goal",
   Jumlah: "Total",
+  "Belum ada langganan": "No subscriptions yet",
+  "Tekan Tambah untuk mencatat layanan berlangganan yang kamu bayar rutin.":
+    "Tap Add to note down the subscriptions you pay for regularly.",
+  "Nama langganan": "Subscription name",
+  "Sisa setelah langganan": "Left after subscriptions",
   "Belum ada kebutuhan": "No needs yet",
   "Tekan Tambah untuk mencatat kebutuhan yang perlu kamu penuhi.":
     "Tap Add to note down a need you have to cover.",
@@ -323,6 +329,7 @@ const NOUN = {
   budget: "budget",
   tujuan: "goal",
   keinginan: "want",
+  langganan: "subscription",
   kebutuhan: "need",
   aset: "asset",
   liabilitas: "liability",
@@ -332,18 +339,19 @@ const NOUN = {
 const tc = (x) => EN[x] || glo(x);
 const RX = [
   [
-    /^(Ubah|Tambah) (transaksi|saldo|keinginan|tujuan|kebutuhan|aset|liabilitas|target)$/,
+    /^(Ubah|Tambah) (transaksi|saldo|keinginan|tujuan|langganan|kebutuhan|aset|liabilitas|target)$/,
     (m) => (m[1] == "Ubah" ? "Edit " : "Add ") + NOUN[m[2]],
   ],
   [/^Setor ke budget (.+)$/, (m) => "Deposit to budget " + tc(m[1])],
   [/^Setor ke (.+)$/, (m) => "Deposit to " + tc(m[1])],
   [
-    /^Hapus (\d+) (transaksi|keinginan|tujuan tabungan|kebutuhan|aset|liabilitas|target) yang dipilih\?$/,
+    /^Hapus (\d+) (transaksi|keinginan|tujuan tabungan|langganan|kebutuhan|aset|liabilitas|target) yang dipilih\?$/,
     (m) => {
       const o = {
         transaksi: ["transaction", "transactions"],
         keinginan: ["want", "wants"],
         "tujuan tabungan": ["savings goal", "savings goals"],
+        langganan: ["subscription", "subscriptions"],
         kebutuhan: ["need", "needs"],
         aset: ["asset", "assets"],
         liabilitas: ["liability", "liabilities"],
@@ -484,6 +492,7 @@ const GL = {
   pemasukan: "income",
   pengeluaran: "expenses",
   tagihan: "bills",
+  langganan: "subscriptions",
   kebutuhan: "needs",
   keperluan: "needs",
   lainnya: "other",

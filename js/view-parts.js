@@ -44,7 +44,7 @@ const pb = (p, c, lb) => {
   hd = (t, kd) =>
     `<div class="row2"><h3>${t}</h3><span class="row2"><button type="button" class="b ib" style="width:auto;margin-left:0;padding:0 18px" onclick="ed('${kd}')">Tambah</button><button type="button" class="b ib" aria-label="Opsi lainnya" aria-haspopup="menu" onclick="openPm(this,'${kd}')">${ic("dots")}</button></span></div>`;
 
-let kk = "need",
+let kk = "subs",
   av = "aset";
 const HZ = [
     ["s", "Short Target", "Di bawah 1 tahun", "Pendek"],
@@ -71,7 +71,9 @@ const HZ = [
     return `<div class="c tgc" id="tgc_${h}" onclick="tgAdd(event,'${h}')"><div class="tgzh" role="button" tabindex="0" aria-label="Tambah target ${sub}" onkeydown="if(event.key=='Enter'||event.key==' '){event.preventDefault();tgAdd(event,'${h}')}">${sub}</div>${l.length ? l.map(tgRow).join("") : '<div class="em" style="padding:12px 8px"><span class="mu">Belum ada catatan.</span></div>'}</div>`;
   },
   kkList = () =>
-    kk == "need"
+    kk == "subs"
+      ? `<div class="c" id="sll">${S.subs.length ? S.subs.map((a) => nmRow("subs", a)).join("") + totRow("Jumlah", sumM(S.subs)) : em(ic("tx", 40), "Belum ada langganan", "Tekan Tambah untuk mencatat layanan berlangganan yang kamu bayar rutin.")}</div>`
+      : kk == "need"
       ? `<div class="c" id="nll">${S.need.length ? S.need.map((a) => nmRow("need", a)).join("") + totRow("Jumlah", sumM(S.need)) : em(DOL, "Belum ada kebutuhan", "Tekan Tambah untuk mencatat kebutuhan yang perlu kamu penuhi.")}</div>`
       : `<div class="c" id="wll">${S.bud.length ? S.bud.map((b) => wl(b)).join("") + totRow("Jumlah", sumM(S.bud)) : em(ic("wish", 40), "Keinginan masih kosong", "Tekan Tambah untuk mencatat barang yang ingin kamu beli.")}</div>`,
   alList = () =>
@@ -108,15 +110,16 @@ const sideStat = (label, value, color) =>
           : ""),
     );
   },
-  /* Rencana: total kebutuhan dan keinginan, lalu dibandingkan dengan saldo */
+  /* Rencana: total langganan, kebutuhan, dan keinginan, lalu dibandingkan dengan saldo */
   asideBud = () => {
-    const need = sumM(S.need),
+    const subs = sumM(S.subs),
+      need = sumM(S.need),
       want = sumM(S.bud),
       balance = total(),
       tone = (v) => (v < 0 ? "go" : "gi");
     return sideBox(
       "Ringkasan rencana",
-      `<h2>Ringkasan rencana</h2>${sideStat("Kebutuhan", R(need))}${sideStat("Keinginan", R(want))}${sideStat("Jumlah", R(need + want))}<h2 class="side-sub">Dibanding saldo</h2>${sideStat("Saldo", R(balance))}${sideStat("Sisa setelah kebutuhan", R(balance - need), tone(balance - need))}${sideStat("Sisa setelah semua", R(balance - need - want), tone(balance - need - want))}`,
+      `<h2>Ringkasan rencana</h2>${sideStat("Langganan", R(subs))}${sideStat("Kebutuhan", R(need))}${sideStat("Keinginan", R(want))}${sideStat("Jumlah", R(subs + need + want))}<h2 class="side-sub">Dibanding saldo</h2>${sideStat("Saldo", R(balance))}${sideStat("Sisa setelah langganan", R(balance - subs), tone(balance - subs))}${sideStat("Sisa setelah kebutuhan", R(balance - subs - need), tone(balance - subs - need))}${sideStat("Sisa setelah semua", R(balance - subs - need - want), tone(balance - subs - need - want))}`,
     );
   },
   /* Neraca: aset dikurangi liabilitas menjadi kekayaan bersih */

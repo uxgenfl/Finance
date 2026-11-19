@@ -84,7 +84,7 @@ const PP = {
   data: [
     "Kontrol data",
     () =>
-      `<div class="c"><h3>Cadangan data</h3><p class="mu">Data hanya tersimpan di browser ini. Simpan cadangan secara berkala agar tidak hilang.</p><div class="act" style="justify-content:flex-start;margin:0"><button type="button" class="b p" onclick="expData()">Ekspor data</button><button type="button" class="b" onclick="impData()">Impor data</button></div></div><div class="c"><h3>Reset data</h3><p class="mu">Hapus semua transaksi, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target. Kategori tetap ada.</p><div class="act" style="justify-content:flex-start;margin:0"><button type="button" class="b d" onclick="resetAll()">Reset semua data</button></div></div>`,
+      `<div class="c"><h3>Cadangan data</h3><p class="mu">Data hanya tersimpan di browser ini. Simpan cadangan secara berkala agar tidak hilang.</p><div class="act" style="justify-content:flex-start;margin:0"><button type="button" class="b p" onclick="expData()">Ekspor data</button><button type="button" class="b" onclick="impData()">Impor data</button></div></div><div class="c"><h3>Reset data</h3><p class="mu">Hapus semua transaksi, langganan, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target. Kategori tetap ada.</p><div class="act" style="justify-content:flex-start;margin:0"><button type="button" class="b d" onclick="resetAll()">Reset semua data</button></div></div>`,
   ],
   set: [
     "Pengaturan",
@@ -151,13 +151,14 @@ function openPp(k) {
 }
 function resetAll() {
   cf(
-    "Hapus semua transaksi, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target? Anda masih bisa mengurungkannya sesaat setelah ini.",
+    "Hapus semua transaksi, langganan, kebutuhan, keinginan, saldo, tabungan, aset, liabilitas, dan target? Anda masih bisa mengurungkannya sesaat setelah ini.",
     () => {
       snap();
       S.tx = [];
       S.bud = [];
       S.goal = [];
       S.need = [];
+      S.subs = [];
       S.aset = [];
       S.liab = [];
       S.tg = [];

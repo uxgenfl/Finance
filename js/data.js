@@ -52,6 +52,7 @@ function seed() {
     bud: [],
     goal: [],
     need: [],
+    subs: [],
     aset: [],
     liab: [],
     tg: [],
@@ -90,6 +91,11 @@ function seed() {
     ["Servis motor", 15e5],
     ["Asuransi kesehatan", 48e5],
   ].forEach(([n, m]) => S.need.push({ id: uid(), n, m }));
+  [
+    ["Netflix", 54e3],
+    ["Spotify", 55e3],
+    ["YouTube Premium", 59e3],
+  ].forEach(([n, m]) => S.subs.push({ id: uid(), n, m }));
   [
     ["Motor", 18e6],
     ["Laptop", 12e6],
@@ -184,7 +190,7 @@ const U = (x) => "\u2063" + esc(x) + "\u2064",
   total = () => S.acc.reduce((a, x) => a + accBal(x.id), 0);
 function migrate() {
   delete S.pf;
-  ["bud", "goal", "need", "aset", "liab", "tg"].forEach((k) => {
+  ["bud", "goal", "need", "subs", "aset", "liab", "tg"].forEach((k) => {
     if (!Array.isArray(S[k])) S[k] = [];
   });
   S.need.forEach((x) => {

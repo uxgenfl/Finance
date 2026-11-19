@@ -10,11 +10,12 @@ const SELK = {
     bud: "keinginan",
     goal: "tujuan tabungan",
     need: "kebutuhan",
+    subs: "langganan",
     aset: "aset",
     liab: "liabilitas",
     tg: "target",
   },
-  KP = { tx: "tx", bud: "bud", goal: "goal", need: "bud", aset: "aset", liab: "aset", tg: "dash" };
+  KP = { tx: "tx", bud: "bud", goal: "goal", need: "bud", subs: "bud", aset: "aset", liab: "aset", tg: "dash" };
 function selUi() {
   document.body.dataset.selk = SEL ? SEL.k : "";
   document.querySelectorAll("[data-k]").forEach((e) => {
@@ -28,7 +29,7 @@ function selUi() {
       e.setAttribute("role", "checkbox");
       e.setAttribute("aria-checked", s);
       e.tabIndex = 0;
-    } else if (e.dataset.k == "goal" || e.dataset.k == "need") {
+    } else if (e.dataset.k == "goal" || e.dataset.k == "need" || e.dataset.k == "subs") {
       e.setAttribute("role", "button");
       e.removeAttribute("aria-checked");
       e.tabIndex = 0;

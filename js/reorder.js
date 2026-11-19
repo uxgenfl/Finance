@@ -7,7 +7,7 @@ let DD = null,
 const DD_MS = 450,
   DD_SLOP = 8,
   DD_EDGE = 56,
-  DD_SEL = '#wll .r[data-k="bud"],#p_goal .g2>.c[data-k="goal"],#nll .r[data-k="need"]';
+  DD_SEL = '#wll .r[data-k="bud"],#p_goal .g2>.c[data-k="goal"],#nll .r[data-k="need"],#sll .r[data-k="subs"]';
 function ddPendClear() {
   if (ddp) {
     clearTimeout(ddp.t);

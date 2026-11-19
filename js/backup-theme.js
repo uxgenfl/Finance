@@ -73,7 +73,7 @@ function clean(o) {
     dt = (x) => typeof x == "string" && /^\d{4}-\d{2}-\d{2}$/.test(x),
     nm = (x) => (x !== "" && x !== null && Number.isFinite(+x) ? +x : null),
     st = (x, n) => String(x ?? "").slice(0, n);
-  const out = { acc: [], cat: [], tx: [], bud: [], goal: [], need: [], aset: [], liab: [], tg: [] };
+  const out = { acc: [], cat: [], tx: [], bud: [], goal: [], need: [], subs: [], aset: [], liab: [], tg: [] };
   for (const c of o.cat) {
     if (!c || !id(c.id) || (c.t != "in" && c.t != "out")) return null;
     out.cat.push({ id: c.id, n: st(c.n, 60), t: c.t });
@@ -110,6 +110,10 @@ function clean(o) {
   for (const g of Array.isArray(o.need) ? o.need : []) {
     if (!g || !id(g.id)) return null;
     out.need.push({ id: g.id, n: st(g.n, 80), m: nm(g.m) ?? nm(g.t) ?? 0 });
+  }
+  for (const g of Array.isArray(o.subs) ? o.subs : []) {
+    if (!g || !id(g.id)) return null;
+    out.subs.push({ id: g.id, n: st(g.n, 80), m: nm(g.m) ?? 0 });
   }
   for (const a of Array.isArray(o.aset) ? o.aset : []) {
     if (!a || !id(a.id) || nm(a.m) === null) return null;

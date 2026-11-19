@@ -47,6 +47,14 @@ const CFG = {
     ],
     d: () => ({ n: "", m: "" }),
   },
+  subs: {
+    t: "langganan",
+    f: [
+      { k: "n", l: "Nama langganan", type: "text", af: 1 },
+      { k: "m", l: "Harga (Rp)", type: "number" },
+    ],
+    d: () => ({ n: "", m: "" }),
+  },
   need: {
     t: "kebutuhan",
     f: [

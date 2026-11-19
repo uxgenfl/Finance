@@ -147,6 +147,7 @@ V.acc =
 <p class="mu">Saldo dihitung dari semua transaksi sampai hari ini, termasuk yang bertanggal bulan lalu. Transaksi bertanggal ke depan baru dihitung saat tanggalnya tiba. Tekan Atur saldo untuk menyesuaikan dengan kondisi asli.</p>`;
 V.bud = () =>
   `${subHd("bud", "Rencana", [
+    ["subs", "Langganan"],
     ["need", "Kebutuhan"],
     ["bud", "Keinginan"],
   ])}<div id="kkl">${kkList()}</div>${asideBud()}`;
