@@ -6,7 +6,8 @@
     border: 0;
   }
 }
-.sr.lp-only {
+.sr.lp-only,
+.mr.lp-only {
   display: none;
 }
 .d-tx .r:nth-of-type(n + 7) {
