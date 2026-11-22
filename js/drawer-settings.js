@@ -132,6 +132,7 @@ const PP = {
         .join("")}</div></div>`,
   ],
 };
+PP.lain = ["Lainnya", PP.set[1]];
 let PPK = null;
 function openPp(k) {
   const p = $("#pp"),

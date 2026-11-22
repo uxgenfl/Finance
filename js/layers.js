@@ -30,8 +30,17 @@ function openLayer(el) {
   syncInert();
   if (!was)
     raf2(() => {
-      const t = el.querySelector("[autofocus]") || el.querySelector('[tabindex="-1"]');
-      if (t) t.focus({ preventScroll: true });
+      const t =
+        (DK.matches && el.querySelector("[data-af]")) ||
+        el.querySelector("[autofocus]") ||
+        el.querySelector('[tabindex="-1"]');
+      if (t) {
+        t.focus({ preventScroll: true });
+        if (t.hasAttribute("data-af") && t.setSelectionRange) {
+          const n = t.value.length;
+          t.setSelectionRange(n, n);
+        }
+      }
     });
 }
 function closeLayer(el) {

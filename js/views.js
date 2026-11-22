@@ -190,5 +190,5 @@ V.set = () => {
   const L = S.lang === "en" ? "English" : "Bahasa Indonesia",
     it = (k, i, t, d) =>
       `<button type="button" class="mr" onclick="openPp('${k}')">${ic(i, 22)}<span class="mt"><b>${t}</b><small class="mu">${d}</small></span>${ic("chev", 18, "mc")}</button>`;
-  return `<div class="row2"><h3>Pengaturan</h3></div><div class="c sl">${it("lang", "globe", "Bahasa", L)}${it("data", "archive", "Kontrol data", "Ekspor, impor, dan reset data")}</div>${PP.set[1]()}`;
+  return `<div class="row2"><h3>Pengaturan</h3></div><div class="c sl">${it("lang", "globe", "Bahasa", L)}${it("data", "archive", "Kontrol data", "Ekspor, impor, dan reset data")}${it("lain", "set", "Lainnya", "Mode gelap, nominal, getar, animasi, dan halaman awal").replace('class="mr"', 'class="mr lp-only"')}</div><div class="set-inline">${PP.set[1]().replace(' id="thm"', "")}</div>`;
 };

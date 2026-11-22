@@ -32,6 +32,8 @@ const EN = {
   Tabungan: "Savings",
   Laporan: "Reports",
   "Kontrol data": "Data controls",
+  Lainnya: "More",
+  "Mode gelap, nominal, getar, animasi, dan halaman awal": "Dark mode, amounts, vibration, animation, and start page",
   Pengaturan: "Settings",
   "Belum ada pengaturan.": "No settings yet.",
   "Bahasa aplikasi": "App language",

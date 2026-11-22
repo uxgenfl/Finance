@@ -75,10 +75,13 @@ function selTog(id) {
   if (!SEL.ids.size && !SEL.man) selOff();
   else selUi();
 }
+/* Laptop: tombol + tidak dipakai. Di layar kecil tampil seperti semula. */
+const QA_DK = matchMedia("(min-width:1024px)");
 function qaSync() {
   const q = document.getElementById("qa");
-  if (q) q.hidden = ["dash", "bud", "aset", "rep", "set"].includes(tab);
+  if (q) q.hidden = QA_DK.matches || ["dash", "bud", "aset", "rep", "set"].includes(tab);
 }
+QA_DK.addEventListener("change", qaSync);
 const _goQ = window.go;
 window.go = function () {
   const r = _goQ.apply(this, arguments);

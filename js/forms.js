@@ -97,7 +97,7 @@ const CFG = {
     t: "tujuan",
     nodel: 1,
     f: [
-      { k: "n", l: "Nama target", type: "text" },
+      { k: "n", l: "Nama target", type: "text", af: 1 },
       { k: "t", l: "Target nominal (Rp)", type: "number" },
       { k: "s", l: "Sudah terkumpul (Rp)", type: "number" },
       { k: "d", l: "Target tanggal", type: "date" },
@@ -220,7 +220,7 @@ function drawF(sk) {
         else if (x.type == "date") h = dpField(x.k, v[x.k] || ymd(new Date()));
         else {
           const nm = x.type == "number";
-          h = `<input id="f_${x.k}" name="${x.k}" type="${nm ? "text" : x.type}" value="${esc(nm ? nf(v[x.k]) : v[x.k])}" autocomplete="off" autocorrect="off" spellcheck="false" ${nm ? 'inputmode="numeric" placeholder="Rp0" oninput="fmtIn(this)"' : ""} ${x.opt ? "" : "required"}>`;
+          h = `<input id="f_${x.k}" name="${x.k}" type="${nm ? "text" : x.type}" value="${esc(nm ? nf(v[x.k]) : v[x.k])}" autocomplete="off" autocorrect="off" spellcheck="false" ${nm ? 'inputmode="numeric" placeholder="Rp0" oninput="fmtIn(this)"' : ""} ${x.opt ? "" : "required"}${x.af ? " data-af" : ""}>`;
         }
         return x.type == "seg"
           ? `<label id="l_${x.k}" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">${l}</label>${h}`
