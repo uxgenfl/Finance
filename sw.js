@@ -7,7 +7,7 @@
 
    Setiap kali mengubah file aplikasi, naikkan VERSION di bawah (misalnya finance-v14 jadi finance-v15)
    supaya aplikasi yang sudah terpasang mengunduh ulang semua file dan memperbarui dirinya. */
-const VERSION = 'finance-v16';
+const VERSION = 'finance-v17';
 
 const FILES = [
   './',
@@ -47,6 +47,9 @@ const FILES = [
   'js/dropdown.js',
   'js/updates.js',
   'js/main.js',
+  'js/firebase-config.js',
+  'js/sync-merge.js',
+  'js/sync.js',
   'manifest.json',
   'fonts/geist-400.woff2',
   'fonts/geist-500.woff2',
@@ -81,11 +84,12 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+  /* Permintaan ke domain lain (Firebase, login Google) ditangani browser langsung, jangan dicegat */
+  if (new URL(event.request.url).origin !== location.origin) return;
   event.respondWith(
     fetch(event.request, { cache: 'no-cache' })
       .then((response) => {
-        const sameOrigin = new URL(event.request.url).origin === location.origin;
-        if (response && response.ok && sameOrigin) {
+        if (response && response.ok) {
           const copy = response.clone();
           caches.open(VERSION).then((cache) => cache.put(event.request, copy));
         }

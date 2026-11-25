@@ -1,7 +1,45 @@
 # Nexus Finance
 
-Aplikasi manajemen keuangan pribadi. Murni HTML, CSS, dan JavaScript tanpa build dan tanpa dependensi.
-Data tersimpan di browser (localStorage), jadi tidak ada server dan tidak ada yang dikirim keluar.
+Aplikasi manajemen keuangan pribadi. Murni HTML, CSS, dan JavaScript tanpa build.
+Data selalu tersimpan di browser (localStorage), jadi aplikasi tetap berjalan penuh tanpa internet.
+Jika pengguna masuk dengan Google (Pengaturan > Kontrol data), data juga disinkronkan lewat Firebase
+supaya sama di semua perangkat. Tanpa login, tidak ada yang dikirim keluar.
+
+## Sinkronisasi antar perangkat (Firebase)
+
+Memakai Firebase Authentication (login Google) dan Cloud Firestore, dimuat dari CDN `gstatic.com`.
+Dokumen `users/{uid}` menyimpan seluruh data keuangan milik satu akun. Hanya data keuangan yang disinkronkan;
+pengaturan per perangkat (tema, bahasa, getar, halaman awal, notifikasi) tetap lokal.
+
+Cara kerja:
+- Setiap perubahan disimpan ke localStorage lebih dulu, lalu dikirim ke cloud setelah jeda 3 detik.
+- Perubahan dari perangkat lain diterima langsung dan digabungkan per item (`id`) dengan penggabungan tiga arah
+  (lihat `js/sync-merge.js`). Item yang dihapus di satu perangkat ikut terhapus di perangkat lain; jika satu sisi
+  menghapus dan sisi lain mengubah item yang sama, versi yang diubah dipertahankan.
+- Saat akun dipakai pertama kali di sebuah perangkat dan kedua sisi sudah punya data, pengguna memilih:
+  gabungkan, pakai data cloud, atau pakai data perangkat ini.
+- Tanpa internet, perubahan menunggu dan dikirim saat online lagi.
+
+Pengaturan Firebase (sekali saja):
+1. Buat proyek di console.firebase.google.com, paket Spark (gratis, tanpa kartu kredit).
+2. Authentication > Sign-in method: aktifkan Google. Settings > Authorized domains: tambahkan domain situs
+   (misalnya `uxgenfl.github.io`).
+3. Firestore Database: buat database (mode produksi), lalu pasang aturan ini di tab Rules:
+
+   ```
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /users/{uid} {
+         allow read, write: if request.auth != null && request.auth.uid == uid;
+       }
+     }
+   }
+   ```
+4. Isi `firebaseConfig` proyek ke `js/firebase-config.js`.
+
+Batas: satu dokumen Firestore maksimal 1 MiB, jadi sinkronisasi berhenti dan memberi peringatan jika data
+mendekati 900 KB (sekitar puluhan ribu transaksi). Jangan upgrade ke paket Blaze atau menautkan billing.
 
 ## Menjalankan
 
@@ -65,6 +103,7 @@ komentar yang menjelaskan isinya. Urutan besarnya:
 4. `forms.js` sampai `reorder.js` interaksi: form, tanggal, pilih banyak, geser, keyboard, urut ulang
 5. `i18n-data.js`, `i18n.js` terjemahan Indonesia ke Inggris
 6. `dropdown.js`, `updates.js`, `main.js` dropdown kustom, pembaruan aplikasi, dan titik awal
+7. `firebase-config.js`, `sync-merge.js`, `sync.js` sinkronisasi antar perangkat (dimuat paling akhir)
 
 ## Menambah fitur
 
