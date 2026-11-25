@@ -119,13 +119,19 @@ function seed() {
   return S;
 }
 let S;
+var SEEDED = 0;
 try {
   S = JSON.parse(localStorage.getItem(KEY));
 } catch (e) {}
-S = S || seed();
+if (!S) {
+  S = seed();
+  SEEDED = 1;
+}
 const save = () => {
   try {
     localStorage.setItem(KEY, JSON.stringify(S));
+    /* sync.js (jika sudah dimuat) menjadwalkan pengiriman ke cloud */
+    if (window.syncOnSave) window.syncOnSave();
   } catch (e) {
     if (!svWarn) {
       svWarn = 1;
@@ -222,3 +228,8 @@ function migrate() {
 }
 migrate();
 save();
+/* Tandai data contoh bawaan, supaya sinkronisasi tahu bahwa isinya belum data asli pengguna */
+if (SEEDED)
+  try {
+    localStorage.setItem("finance-seed-v1", JSON.stringify(S));
+  } catch (_) {}

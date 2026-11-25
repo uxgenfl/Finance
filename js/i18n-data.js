@@ -81,8 +81,54 @@ const EN = {
     "Delete all transactions, subscriptions, needs, wants, balance, savings, assets, liabilities, and goals? You can still undo this right after.",
   Reset: "Reset",
   "Semua data direset": "All data has been reset",
-  "Data hanya tersimpan di browser ini. Simpan cadangan secara berkala agar tidak hilang.":
-    "Data is only stored in this browser. Back it up regularly so it is not lost.",
+  "Data tersimpan di browser ini, dan di cloud jika kamu masuk. Simpan cadangan secara berkala agar tidak hilang.":
+    "Data is stored in this browser, and in the cloud if you sign in. Back it up regularly so it is not lost.",
+  "Sinkronisasi antar perangkat": "Sync across devices",
+  "Menyiapkan sinkronisasi…": "Preparing sync…",
+  "Layanan sinkronisasi tidak bisa dimuat. Periksa koneksi internet.":
+    "Couldn't load the sync service. Check your internet connection.",
+  "Coba lagi": "Try again",
+  "Membuka jendela login…": "Opening the sign-in window…",
+  "Masuk dengan Google agar data di laptop dan HP selalu sama.":
+    "Sign in with Google to keep the data on your laptop and phone the same.",
+  "Masuk dengan Google": "Sign in with Google",
+  "Masuk sebagai": "Signed in as",
+  "Menunggu pilihanmu…": "Waiting for your choice…",
+  "Pilih sekarang": "Choose now",
+  "Menyinkronkan…": "Syncing…",
+  "Tidak ada koneksi. Perubahan akan dikirim saat online.":
+    "No connection. Changes will be sent when you're back online.",
+  "Tersinkron": "Synced",
+  "Sinkronkan sekarang": "Sync now",
+  "Keluar dari akun": "Sign out",
+  "Keluar dari akun? Data di perangkat ini tetap ada, tetapi tidak lagi disinkronkan.":
+    "Sign out? The data on this device stays, but it will no longer be synced.",
+  "Data tersimpan di akun Firebase milikmu dan hanya bisa dibaca oleh akun yang login.":
+    "Data is stored in your own Firebase account and can only be read by the signed-in account.",
+  "Data di cloud tidak terbaca.": "The data in the cloud can't be read.",
+  "Data terlalu besar untuk disinkronkan. Ekspor cadangan, lalu hapus data lama.":
+    "The data is too large to sync. Export a backup, then delete old data.",
+  "Akses ditolak. Periksa aturan keamanan Firestore.":
+    "Access denied. Check the Firestore security rules.",
+  "Sinkronisasi gagal. Akan dicoba lagi otomatis.": "Sync failed. It will be retried automatically.",
+  "Pop-up diblokir browser. Izinkan pop-up untuk situs ini, lalu coba lagi.":
+    "Pop-ups are blocked by the browser. Allow pop-ups for this site, then try again.",
+  "Domain situs ini belum diizinkan di Firebase (Authentication, Settings, Authorized domains).":
+    "This site's domain isn't authorized in Firebase (Authentication, Settings, Authorized domains).",
+  "Tidak ada koneksi internet.": "No internet connection.",
+  "Kunci API Firebase tidak valid. Periksa js/firebase-config.js.":
+    "The Firebase API key is not valid. Check js/firebase-config.js.",
+  "Gagal masuk. Coba lagi.": "Couldn't sign in. Please try again.",
+  "Data diganti dengan data cloud": "Data replaced with cloud data",
+  "Perangkat ini dan akun cloud sama-sama sudah punya data.":
+    "This device and your cloud account both already have data.",
+  "Transaksi di perangkat ini:": "Transactions on this device:",
+  "Transaksi di cloud:": "Transactions in the cloud:",
+  "Gabungkan menyimpan semua transaksi dari keduanya. Memilih salah satu akan menimpa data di sisi lainnya.":
+    "Merge keeps all transactions from both. Choosing one side will overwrite the data on the other.",
+  Gabungkan: "Merge",
+  "Pakai data cloud": "Use cloud data",
+  "Pakai data perangkat ini": "Use this device's data",
   "Ekspor data": "Export data",
   "Impor data": "Import data",
   "Simpan file cadangan atau salin teksnya. Impor kembali kapan saja untuk memulihkan data.":
